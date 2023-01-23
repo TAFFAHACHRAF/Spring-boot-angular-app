@@ -10,7 +10,7 @@ import { EmployeService } from './employe.service';
 })
 export class AppComponent implements OnInit{
   title = 'product_management_app';
-  newdata:any;
+  empls:any;
   public employees: Employe[]=[];
 
   constructor(private employeService: EmployeService){}
@@ -21,7 +21,8 @@ export class AppComponent implements OnInit{
 
   public getEmployes() : void{
     this.employeService.getEmployes().subscribe(res=>{
-      this.newdata=res;
+      console.log(res);
+      this.empls=res;
     }); 
   }
 }
