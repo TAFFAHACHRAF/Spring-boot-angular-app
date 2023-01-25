@@ -4,7 +4,16 @@
             Products list
         </div>
         <div class="card-body">
-            <table class="table">
+            <form class="mt-2" [formGroup]="searchFormGroup">
+                <div class="input-group">
+                    <label class="input-group-text">Keyword:</label>
+                    <input type="text" class="form-control" (change)="handelSearchProducts()" formControlName="keyword">
+                    <button class="btn btn-info">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </form>
+            <table class="table mt-2">
                 <thead>
                     <tr>
                         <th>ID</th> <th>NAME</th> <th>PRICE</th>

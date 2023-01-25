@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { EmployeService } from './employe.service';
 import { ProductsComponent } from './products/products.component';
 import { CustomersComponent } from './customers/customers.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes =[
   {path: 'products',component:ProductsComponent},
@@ -26,7 +27,8 @@ const appRoutes: Routes =[
     BrowserModule,
     HttpClientModule,
     RouterModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [EmployeService],
   bootstrap: [AppComponent]

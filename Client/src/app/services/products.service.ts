@@ -54,4 +54,14 @@ export class ProductsService {
     }
     return of(true);
   }
+
+  public setProducts(keyword : any) : Observable<Product[]>{
+    let newProducts:Product[]=[];
+    if(keyword!=''){
+      newProducts=this.products.filter((p)=> 
+        { return ((keyword==p.id) || p.name.includes(keyword) || p.promotion==keyword || (keyword==p.price) ) ? p : null;}
+      )
+    }
+    return of(newProducts);
+  }
 }
