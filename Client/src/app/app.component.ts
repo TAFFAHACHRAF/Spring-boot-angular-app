@@ -8,7 +8,7 @@ import { EmployeService } from './employe.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit{ 
   title = 'product_management_app';
   empls:any;
   public employees: Employe[]=[];
@@ -24,5 +24,25 @@ export class AppComponent implements OnInit{
       console.log(res);
       this.empls=res;
     }); 
+  }
+
+  public oneOpenModal(employe: Employe,mode: string):void{
+    const button = document.createElement('button');
+    button.type='button';
+    button.style.display='none';
+    button.setAttribute('data-toggle','modal');
+    if(mode === 'add'){
+      alert('aded');
+      button.setAttribute('data-target','#add');
+    }
+    if(mode === 'edit'){
+      alert('edited');
+      button.setAttribute('data-target','#edit');
+    }
+    if(mode === 'delete'){
+      console.log(this.employeService.deleteEmploye(employe.id));
+    }
+    const container=document.getElementById('main-container')?.appendChild(button);
+    button.click();
   }
 }
