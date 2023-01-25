@@ -16,8 +16,8 @@
                         <td><i  *ngIf="product.promotion==true" class="bi bi-heart-fill text-success"></i></td>
                         <td>
                             <button class="btn btn-success" [ngClass]="!product.promotion ? 'btn-success' : 'btn-danger'" class="btn">
-                                <span *ngIf="product.promotion==true" (click)="handleSetPromotion(product,!product.promotion)">promotion On</span>
-                                <span *ngIf="product.promotion==false" (click)="handleSetPromotion(product,!product.promotion)">promotion off</span>
+                                <span *ngIf="product.promotion==true" (click)="handleSetPromotion(product,false)">promotion On</span>
+                                <span *ngIf="product.promotion==false" (click)="handleSetPromotion(product,true)">promotion off</span>
                             </button>
                         </td>
                         <td>

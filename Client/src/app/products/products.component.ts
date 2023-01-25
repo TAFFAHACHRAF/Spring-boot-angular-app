@@ -34,17 +34,19 @@ export class ProductsComponent implements OnInit{
     if(conf==false) return;
     this.productsService.deleteProduct(p).subscribe({
       next : (data)=>{
-        let index=this.products.indexOf(p);
-        this.products.splice(index,0);
+        this.products=this.products.filter((pp)=> pp.id!=p.id );
       }
     })
   }
 
-  public handleSetPromotion(p : Product,promotion : boolean){
-    for(let i=0;i<this.products.length;i++){
-      if(this.products[i].id==p.id){
-        this.products[i].promotion=promotion;
+  public handleSetPromotion(product : Product,promotion : boolean) {
+    this.productsService.setPromotion(product,promotion).subscribe({
+      next: (data)=>{
+        var result  = this.products.filter(function(p){return p.id===product.id;} )[0];
+        if(result!=undefined){
+          result.promotion=promotion;
+        }
       }
-    }
+    })
   }
 }

@@ -43,7 +43,15 @@ export class ProductsService {
   }
 
   public deleteProduct(p : Product) : Observable<boolean>{
-    this.products.splice(this.products.indexOf(p,1));
+    this.products=this.products.filter((pp)=> pp.id!=p.id );
+    return of(true);
+  }
+
+  public setPromotion(p : Product,promotion : boolean) : Observable<boolean>{
+    var result  = this.products.filter(function(pp){return pp.id===p.id;} )[0];
+    if(result!=undefined){
+      result.promotion=promotion;
+    }
     return of(true);
   }
 }
